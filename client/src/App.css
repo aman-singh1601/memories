@@ -1,0 +1,27 @@
+body{
+    margin: 0;
+    padding-top: 8px;
+}
+.home_header{
+   height: 65px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+   font-size:1.5rem;
+   letter-spacing: 2px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    border-radius: 8px;
+
+}
+.header_heading{
+    font-weight: 600;
+    color: rgb(77, 77, 138);
+    text-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+.header_image{
+    margin-left: 10px;
+    height: 60px;
+    object-fit: contain;
+}
