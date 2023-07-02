@@ -1,8 +1,10 @@
 body{
     margin: 0;
     padding-top: 8px;
+    background-color:#9FA2B2 ;
 }
 .home_header{
+    background-color: #DBC2CF;
    height: 65px;
     margin: auto;
     display: flex;
@@ -16,8 +18,9 @@ body{
 
 }
 .header_heading{
-    font-weight: 600;
-    color: rgb(77, 77, 138);
+
+   font-family: Ubuntu;
+    color: #3C7A89;
     text-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 }
 .header_image{

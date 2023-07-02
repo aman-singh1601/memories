@@ -1,12 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Posts from './components/Posts/Posts';
 import Form from './components/Form/Form';
 import './App.css'
+import { useDispatch } from 'react-redux';
+import { fetchPosts } from './features/postSlice';
 
 
 
 function App() {
+  const dispatch=useDispatch();
 
+  useEffect(()=>{
+    dispatch(fetchPosts())
+  },[])
   return (
     <div >
       <nav className='home_header'>
