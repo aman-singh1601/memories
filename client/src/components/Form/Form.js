@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import FileBase from 'react-file-base64'
+import axios from 'axios'
 
 import './Form.css'
 
@@ -11,39 +12,56 @@ const Form=() =>{
     tags:'',
     selectedFile:''
   })
-  const handleSubmit=()=>{
+  const handleSubmit= async (e)=>{
+      e.preventDefault()
+      await axios.post('http://localhost:5000/posts',postData)
+                  .then((res)=>{
+                    console.log(res)
+                  })
+                  .catch((err)=>{
+                    console.log((err))
+                  })
+
 
   }
   const clear=()=>{
-    
+
   }
   return (
-    <div>
-      <form onsubmit={handleSubmit}>
-        <h6>Creating a Memory</h6>
-        <label>Creator</label>
+    <div className='form_container'>
+      <h4>Creating a Memory</h4>
+      <form onSubmit={handleSubmit} className='form'>
+        
         <input
+          placeholder='Creator'
+          className='form_input'
           type="text"
           name="creator"
           value={postData.creator}
           onChange={(e)=>setpostData({...postData ,creator:e.target.value})}
         />
-        <label>Title</label>
+        
         <input
+          placeholder='Title'
+          className='form_input'
           type="text"
           name="title"
           value={postData.title}
           onChange={(e)=>setpostData({...postData ,title:e.target.value})}
         />
-        <label>Message</label>
+        
         <textarea
+          placeholder='Message'
+          className='form_input input_message'
           type="text"
           name="message"
           value={postData.message}
           onChange={(e)=>setpostData({...postData ,message:e.target.value})}
         />
-        <label>Tags</label>
+        
         <input
+          placeholder='Tags'
+         className='form_input'
           type="text"
           name="tags"
           value={postData.tags}

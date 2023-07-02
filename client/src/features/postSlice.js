@@ -31,6 +31,7 @@ const postSlice=createSlice({
         state.posts=[]
         state.error=action.error.message
     })
+   
 }
 })
 

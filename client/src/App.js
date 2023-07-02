@@ -20,16 +20,15 @@ function App() {
         <img className='header_image'  src='https://raw.githubusercontent.com/adrianhajdin/project_mern_memories/master/client/src/images/memories.png?token=AF56X74XONEUGZ4FD2FUIA27UURPI'
          alt='' />
       </nav>
-      <div>  
-        <div >
-            <div >
+      
+      <div className='main_body'>
+            <div className='post_container' >
                 <Posts/>
             </div>
-            <div >
+            <div className='form_container'>
                 <Form/>
             </div>
         </div>
-      </div>
     </div>
   );
 }

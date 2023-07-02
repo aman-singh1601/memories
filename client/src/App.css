@@ -28,3 +28,16 @@ body{
     height: 60px;
     object-fit: contain;
 }
+
+.main_body{
+    width: 100%;
+    display: flex;
+}
+.post_container{
+    border: 2px solid red;
+    flex: 0.8;
+}
+.form_container{
+    border: 2px solid blue;
+    flex:0.2;
+}
