@@ -1,8 +1,18 @@
 import React from 'react'
+import './Post.css'
 
-const Post = () => {
+const Post = ({post}) => {
   return (
-    <div>Post</div>
+    <div>
+      <img 
+      className='post_image'
+      src={post.selectedFile}
+      alt=''/>
+      <div className=''>
+        <span>{post.creator}</span>
+        <span></span>
+      </div>
+    </div>
   )
 }
 
