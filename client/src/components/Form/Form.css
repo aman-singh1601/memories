@@ -27,7 +27,9 @@
     font-family: sans-serif;
 }
 .input_message{
+    min-width: 90%;
     max-width: 90%;
+
 }
 .form_input:focus{
     outline: none;

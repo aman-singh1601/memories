@@ -22,10 +22,10 @@ function App() {
       </nav>
       
       <div className='main_body'>
-            <div className='post_container' >
+            <div className='posts_con' >
                 <Posts/>
             </div>
-            <div className='form_container'>
+            <div className='form_con'>
                 <Form/>
             </div>
         </div>

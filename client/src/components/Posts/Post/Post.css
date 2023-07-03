@@ -1,0 +1,84 @@
+.post_container{
+   
+    height: 300px;
+    width:260px;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    overflow: hidden;
+    background-color: #DBC2CF;
+    position: relative;
+    border-bottom-left-radius: 0.8rem;
+    border-bottom-right-radius: 0.8rem;
+  
+}
+.post_image{
+    height: 140px;
+    width: 100%;
+}
+.post_head{
+    position: absolute;
+    top:4px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+}
+.post_info{
+    margin-left: 6px;
+    color: #16262E;
+    display: flex;
+    flex-direction: column;
+}
+.post_creator{
+
+    font-size: 1.5rem;
+}
+.post_time{
+    font-family: sans-serif;
+    font-size: 0.6rem;
+}
+.post_horiz{
+    margin-right: 6px;
+    color: #16262E;
+}
+.post_horiz:hover{
+    cursor: pointer;
+}
+.post_details{
+    margin: 4px;
+    font-size: 0.8rem;
+    font-family: sans-serif;
+    color: #16262E;
+}
+.post_actions{
+    position: absolute;
+    width: 97%;
+    bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+    padding: 2px;
+    padding-left: 4px;
+    
+}
+.like_button{
+    display: flex;
+}
+.like_button>span{
+    padding: 4px;
+    letter-spacing: .06rem;
+}
+.post_icon{
+    color: #2E4756;
+}
+.post_message{
+    font-family: Ubuntu;
+    color: #2E4756;
+    margin-top: 20px;
+    margin-left: 4px;
+    font-size: 1.3rem;
+}
+.like_count{
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+}
