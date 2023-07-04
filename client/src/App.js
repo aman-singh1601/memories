@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Posts from './components/Posts/Posts';
 import Form from './components/Form/Form';
 import './App.css'
@@ -9,10 +9,12 @@ import { fetchPosts } from './features/postSlice';
 
 function App() {
   const dispatch=useDispatch();
+  const [currentId,setCurrentId]=useState(null);
+
 
   useEffect(()=>{
     dispatch(fetchPosts())
-  },[])
+  },[currentId,dispatch])
   return (
     <div >
       <nav className='home_header'>
@@ -23,10 +25,10 @@ function App() {
       
       <div className='main_body'>
             <div className='posts_con' >
-                <Posts/>
+                <Posts setCurrentId={setCurrentId}/>
             </div>
             <div className='form_con'>
-                <Form/>
+                <Form currentId={currentId} setCurrentId={setCurrentId}/>
             </div>
         </div>
     </div>

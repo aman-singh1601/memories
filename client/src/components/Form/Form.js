@@ -1,10 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import FileBase from 'react-file-base64'
 import axios from 'axios'
+import { useSelector,useDispatch } from 'react-redux'
 
 import './Form.css'
+import { update } from '../../features/postSlice'
 
-const Form=() =>{
+
+
+const Form=({currentId,setCurrentId}) =>{
+  const post=useSelector(state=>currentId?state.post.posts.find(p=>p._id===currentId):null)
+
+  const dispatch=useDispatch();  
+  
   const [postData,setpostData]=useState({
     creator:'',
     title:'',
@@ -12,24 +20,51 @@ const Form=() =>{
     tags:'',
     selectedFile:''
   })
+  useEffect(()=>{
+      if(post)
+      setpostData(post);
+  },[post])
+
+  const clear=()=>{
+    setCurrentId(null);
+    setpostData(
+      {
+        creator:'',
+        title:'',
+        message:'',
+        tags:'',
+        selectedFile:''
+      }
+    )
+}
   const handleSubmit= async (e)=>{
       e.preventDefault()
-      await axios.post('http://localhost:5000/posts',postData)
-                  .then((res)=>{
-                    console.log(res)
-                  })
-                  .catch((err)=>{
-                    console.log((err))
-                  })
-
+      
+      if(currentId){
+        const {data}= await axios.patch(`http://localhost:5000/posts/${currentId}`,postData);
+        console.log(data)
+        dispatch(update(data))
+        
+         
+      }else{
+        //create post
+         await axios.post('http://localhost:5000/posts',postData)
+         .then((res)=>{
+         console.log(res)
+      })
+      .catch((err)=>{
+      console.log((err))
+      })
+    }
+    
+    clear();
+    
 
   }
-  const clear=()=>{
-
-  }
+  
   return (
     <div className='form_container'>
-      <h4>Creating a Memory</h4>
+      <h4>{post?'Editing' : 'Creating'} a Memory</h4>
       <form onSubmit={handleSubmit} className='form'>
         
         <input

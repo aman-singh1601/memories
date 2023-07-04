@@ -17,6 +17,11 @@ export const fetchPosts=createAsyncThunk('post/fetchPosts',()=>{
 const postSlice=createSlice({
     name:'post',
     initialState,
+    reducers:{
+        update:(state,action)=>{
+
+        }
+    },
     extraReducers : builder=>{
         builder.addCase(fetchPosts.pending,state => {
         state.loading = true
@@ -36,3 +41,4 @@ const postSlice=createSlice({
 })
 
 export default postSlice.reducer
+export const {update}=postSlice.actions

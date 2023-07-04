@@ -2,7 +2,7 @@ import React from 'react'
 import './Post.css'
 import moment from 'moment'
 import {MoreHoriz,ThumbUpAlt,Delete} from '@mui/icons-material';
-const Post = ({post}) => {
+const Post = ({post,setCurrentId}) => {
   return (
     <div className='post_container'>
       <img 
@@ -15,7 +15,10 @@ const Post = ({post}) => {
                 <span className='post_time'>{moment(post.createdAt).fromNow()}</span>
               </div>
               <div className='post_horiz' >
-                  <MoreHoriz/>
+                  <MoreHoriz
+                   className='post_icon'
+                   onClick={()=>setCurrentId(post._id)}
+                  />
               </div>
       </div>
       <div className='post_details'>

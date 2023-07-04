@@ -3,10 +3,8 @@ import Post from './Post/Post'
 
 import { useSelector } from 'react-redux'
 
-const Posts=()=> {
+const Posts=({setCurrentId})=> {
   const post=useSelector(state=>state.post)
-  console.log('posts : ',post)
-  
 
   return (
     <>
@@ -19,7 +17,7 @@ const Posts=()=> {
           <div>
             {
               post.posts.map((post,index)=>(
-                <Post key={index}  post={post}/>
+                <Post key={index}  setCurrentId={setCurrentId} post={post}/>
               ))
             }
           </div>
