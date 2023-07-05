@@ -1,0 +1,79 @@
+
+.auth_container{
+    min-height:100vh;
+	font-family: 'Noto Sans', sans-serif;
+}
+.auth_upperContainer{
+    margin-top: 10px;
+	position:absolute;
+	left:50%;
+	top:50%;
+	transform: translate(-50%,-50%);
+    background-color:  #2E4756;
+	border-radius:3px;
+	padding:70px 100px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px; */
+}
+.text_center{
+    font-family: Ubuntu;
+    color: #DBC2CF;
+    text-transform: uppercase;
+    font-size: 23px;
+    margin: -50px 0 80px 0;
+    display: block;
+    text-align: center;
+}
+.input-container{
+	position:relative;
+	margin-bottom:25px;
+}
+.input-container label{
+	position:absolute;
+	top:0px;
+	left:0px;
+	font-size:16px;
+	color:#DBC2CF;	
+    /* pointer-event:none; */
+	transition: all 0.5s ease-in-out;
+}
+.input-container input{ 
+  border:0;
+  border-bottom:1px solid #555;  
+  background:transparent;
+  width:100%;
+  padding:8px 0 5px 0;
+  font-size:16px;
+  color:#fff;
+}
+.input-container input:focus{ 
+ border:none;	
+ outline:none;
+ border-bottom:1px solid #16262E;	
+}
+.btn{
+	color:#DBC2CF;
+	background-color:#16262E;
+	outline: none;
+    border: 0;
+    color: #DBC2CF;
+	padding:10px 20px;
+	text-transform:uppercase;
+	margin-top:25px;
+	border-radius:2px;
+	cursor:pointer;
+	position:relative;
+    font-size: 1rem;
+}
+.btn:hover{
+    cursor: pointer;
+    transition: 450ms ease-in-out;
+     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+ 
+}
+.input-container input:focus ~ label,
+.input-container input:valid ~ label{
+	top:-12px;
+	font-size:12px;
+	
+}
