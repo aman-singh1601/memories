@@ -1,5 +1,7 @@
 .post_container{
-   
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+   margin-left: 10px;
+   margin-bottom: 10px;
     height: 300px;
     width:260px;
     border-top-left-radius: 1rem;
@@ -79,9 +81,18 @@
 .post_message{
     font-family: Ubuntu;
     color: #2E4756;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-left: 4px;
     font-size: 1.3rem;
+}
+.post_title{
+    color: #16262E;
+    font-family: cursive;
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
 }
 .like_count{
     font-family: sans-serif;

@@ -2,9 +2,28 @@ import React from 'react'
 import './Post.css'
 import moment from 'moment'
 import {MoreHoriz,ThumbUpAlt,Delete} from '@mui/icons-material';
+import { useDispatch } from 'react-redux';
+import { removePost } from '../../../features/postSlice';
+import axios from 'axios';
+
 const Post = ({post,setCurrentId}) => {
+  const dispatch=useDispatch();
+  const url='http://localhost:5000/posts';
+  
+  const deletePost=async()=>{
+    console.log(post._id);
+    try{
+    await axios.delete(`${url}/${post._id}`)
+    }catch(err){
+      console.log(err)
+    }
+    dispatch(removePost(post._id))
+  }
+  
+
   return (
-    <div className='post_container'>
+    <div  className='post_container'>
+     
       <img 
       className='post_image'
       src={post.selectedFile}
@@ -24,10 +43,13 @@ const Post = ({post,setCurrentId}) => {
       <div className='post_details'>
           <span>
             {
-              post.tags.map((tag)=>`#${tag} `)
+              `#${post.tags}`
             }
           </span>
          
+      </div>
+      <div className='post_title'>
+            {post.title}
       </div>
       <div className='post_message'>
             {post.message}
@@ -40,11 +62,15 @@ const Post = ({post,setCurrentId}) => {
             </span>
             </div>
             <div className='like_button'>
-            <Delete className='post_icon'/>
+            <Delete
+              onClick={deletePost} 
+              className='post_icon'
+            />
             </div>
       </div>
     </div>
   )
 }
+
 
 export default Post

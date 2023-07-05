@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useSelector,useDispatch } from 'react-redux'
 
 import './Form.css'
-import { update } from '../../features/postSlice'
+import { createPost, update } from '../../features/postSlice'
 
 
 
@@ -22,7 +22,7 @@ const Form=({currentId,setCurrentId}) =>{
   })
   useEffect(()=>{
       if(post)
-      setpostData(post);
+        setpostData(post);
   },[post])
 
   const clear=()=>{
@@ -48,19 +48,17 @@ const Form=({currentId,setCurrentId}) =>{
          
       }else{
         //create post
-         await axios.post('http://localhost:5000/posts',postData)
-         .then((res)=>{
-         console.log(res)
-      })
-      .catch((err)=>{
-      console.log((err))
-      })
+       axios.post('http://localhost:5000/posts',postData)
+       .then(res=>{
+        console.log( 'res : ' ,res)
+        dispatch(createPost(postData))
+       })
+     
+      }
+      clear();
     }
     
-    clear();
     
-
-  }
   
   return (
     <div className='form_container'>

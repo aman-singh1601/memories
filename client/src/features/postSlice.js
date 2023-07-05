@@ -1,6 +1,6 @@
 import {createSlice,createAsyncThunk} from '@reduxjs/toolkit';
 
-import * as api from '../api'
+
 import axios from 'axios'
 const url='http://localhost:5000/posts';
 
@@ -19,8 +19,19 @@ const postSlice=createSlice({
     initialState,
     reducers:{
         update:(state,action)=>{
-
+            state.posts=state.posts.map((post)=>post._id===action.payload._id?action.payload:post)
+        },
+        removePost: (state,action)=>{
+            
+            console.log(action.payload)
+            state.posts=state.posts.filter((post)=>post._id !== action.payload)
+        },
+        createPost: (state,action)=>{
+            console.log(action.payload)
+            state.posts.push(action.payload)
         }
+       
+       
     },
     extraReducers : builder=>{
         builder.addCase(fetchPosts.pending,state => {
@@ -41,4 +52,4 @@ const postSlice=createSlice({
 })
 
 export default postSlice.reducer
-export const {update}=postSlice.actions
+export const {update,removePost,createPost}=postSlice.actions
