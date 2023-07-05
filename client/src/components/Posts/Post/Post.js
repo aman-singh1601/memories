@@ -3,7 +3,7 @@ import './Post.css'
 import moment from 'moment'
 import {MoreHoriz,ThumbUpAlt,Delete} from '@mui/icons-material';
 import { useDispatch } from 'react-redux';
-import { removePost } from '../../../features/postSlice';
+import { removePost,likePost } from '../../../features/postSlice';
 import axios from 'axios';
 
 const Post = ({post,setCurrentId}) => {
@@ -18,6 +18,14 @@ const Post = ({post,setCurrentId}) => {
       console.log(err)
     }
     dispatch(removePost(post._id))
+  }
+  const likeCard= async ()=>{
+    try{
+      const {data}=await axios.patch(`${url}/${post._id}/likepost`)
+      dispatch(likePost(data))
+    }catch(err){
+      console.log(err)
+    }
   }
   
 
@@ -43,7 +51,7 @@ const Post = ({post,setCurrentId}) => {
       <div className='post_details'>
           <span>
             {
-              `#${post.tags}`
+              post.tags.map((tag)=> `#${tag} `)
             }
           </span>
          
@@ -56,7 +64,7 @@ const Post = ({post,setCurrentId}) => {
       </div>
       <div className='post_actions'>
             <div className='like_button'>
-            <ThumbUpAlt className='post_icon'/>
+            <ThumbUpAlt className='post_icon' onClick={likeCard}/>
             <span className='like_count'>
               {post.likeCount}
             </span>

@@ -46,4 +46,9 @@ export const likePost=async (req,res)=>{
     if(!mongoose.Types.ObjectId.isValid(id))
     return res.status(404).send('No post with that id');
 
+    const post =await PostMessage.findById(id);
+    const updatedPost=await PostMessage.findByIdAndUpdate(id,{likeCount:post.likeCount+1},{new:true})
+
+    res.json(updatedPost)
+
 }

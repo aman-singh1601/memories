@@ -23,12 +23,14 @@ const postSlice=createSlice({
         },
         removePost: (state,action)=>{
             
-            console.log(action.payload)
+           
             state.posts=state.posts.filter((post)=>post._id !== action.payload)
         },
         createPost: (state,action)=>{
-            console.log(action.payload)
             state.posts.push(action.payload)
+        },
+        likePost:(state,action)=>{
+            state.posts=state.posts.map((post)=>post._id===action.payload._id?action.payload:post)
         }
        
        
@@ -52,4 +54,4 @@ const postSlice=createSlice({
 })
 
 export default postSlice.reducer
-export const {update,removePost,createPost}=postSlice.actions
+export const {update,removePost,createPost,likePost}=postSlice.actions
