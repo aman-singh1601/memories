@@ -1,37 +1,26 @@
 import React, { useEffect, useState } from 'react'
-import Posts from './components/Posts/Posts';
-import Form from './components/Form/Form';
+
 import './App.css'
-import { useDispatch } from 'react-redux';
-import { fetchPosts } from './features/postSlice';
+import Header from './components/Header/Header';
+import Home from './components/Home/Home';
 
 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Auth from './components/Auth/Auth';
 
 function App() {
-  const dispatch=useDispatch();
-  const [currentId,setCurrentId]=useState(null);
-
-
-  useEffect(()=>{
-    dispatch(fetchPosts())
-  },[currentId,dispatch])
+  
   return (
+    <Router>
     <div >
-      <nav className='home_header'>
-        <h2 className='header_heading'>Memories</h2>
-        <img className='header_image'  src='https://raw.githubusercontent.com/adrianhajdin/project_mern_memories/master/client/src/images/memories.png?token=AF56X74XONEUGZ4FD2FUIA27UURPI'
-         alt='' />
-      </nav>
+    <Header/>
+      <Routes>
+      <Route path='/' element={<Home/>}/>
+      <Route path='/auth' element={<Auth/>} />
       
-      <div className='main_body'>
-            <div className='posts_con' >
-                <Posts setCurrentId={setCurrentId}/>
-            </div>
-            <div className='form_con'>
-                <Form currentId={currentId} setCurrentId={setCurrentId}/>
-            </div>
-        </div>
+      </Routes>
     </div>
+    </Router>
   );
 }
 

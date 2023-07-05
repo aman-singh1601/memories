@@ -1,0 +1,58 @@
+.home_header{
+    background-color: #DBC2CF;
+    height: 65px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+   font-size:1.5rem;
+   letter-spacing: 2px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    /* border-radius: 8px; */
+
+}
+.header_name{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  
+}
+.header_heading{
+   font-family: Ubuntu;
+    color: #3C7A89;
+    text-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    margin:0;
+    margin-left: 8px !important;
+}
+.header_image{
+    height: 50px;
+    object-fit: contain;
+}
+.logo_link{
+    height: 50px;
+    /* margin-bottom:30px; */
+}
+.user_info{
+    margin-right: 8px;
+}
+.header_button{
+    font-size: 1rem;
+    margin-top: 4px;
+    border: none;
+    height: 30px;
+    margin-bottom: 4px;
+    margin-left: 4px;
+    width: 90%;
+    border-radius: .3rem;
+    background-color: #16262E;
+    color: white;
+    transition: 450ms;
+}
+.header_button:hover{
+    font-size: 1.2rem;
+    scale: 1.05;
+}
