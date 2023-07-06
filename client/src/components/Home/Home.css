@@ -4,12 +4,11 @@
 }
 .posts_con{
     /* border: 2px solid red; */
-    
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     margin-top: 30px;
-    margin-left: 20px;
+    /* margin-left: 10px; */
     margin-right: 20px;
     flex: 0.8;
 
