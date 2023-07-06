@@ -4,7 +4,7 @@
 	font-family: 'Noto Sans', sans-serif;
 }
 .auth_upperContainer{
-    margin-top: 10px;
+    margin-top: 20px;
 	position:absolute;
 	left:50%;
 	top:50%;
@@ -16,11 +16,11 @@
     /* box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px; */
 }
 .text_center{
-    font-family: Ubuntu;
+    font-family: serif;
     color: #DBC2CF;
     text-transform: uppercase;
     font-size: 23px;
-    margin: -50px 0 80px 0;
+    margin: -50px 0 30px 0;
     display: block;
     text-align: center;
 }
@@ -76,4 +76,34 @@
 	top:-12px;
 	font-size:12px;
 	
+}
+.btn_switch{
+    /* margin-left: 5px; */
+    width: 200px;
+    font-family: sans-serif;
+    width: 100%;
+    color: #16262E;
+	background-color:#DBC2CF;
+	outline: none;
+    border: 0;
+	padding:10px 10px;
+	text-transform:uppercase;
+	margin-top:10px;
+	border-radius:2px;
+	cursor:pointer;
+	position:relative;
+    font-size: 12px;
+}
+.btn_switch:hover{
+    cursor: pointer;
+    transition: 450ms ease-in-out;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+ 
+}
+/* .google_button{
+    width: 200px;
+    /* text-align: center; */
+.auth_btn{
+    display: flex;
+    flex-direction: column;
 }
