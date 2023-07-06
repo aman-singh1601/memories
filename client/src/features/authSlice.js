@@ -11,10 +11,14 @@ const authSlice=createSlice({
         authSignin:(state,action)=>{
            localStorage.setItem('profile',JSON.stringify({...action?.payload}))
            state.authData=action?.payload
+        },
+        authLogout:(state,action)=>{
+            localStorage.clear();
+            state.authData=null;
         }
     }
 })
 
 
 export default authSlice.reducer
-export const {authSignin}=authSlice.actions
+export const {authSignin,authLogout}=authSlice.actions

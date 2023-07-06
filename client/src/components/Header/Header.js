@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import './Header.css'
-import {Link} from 'react-router-dom'
+import {Link, useLocation, useNavigate} from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { authLogout } from '../../features/authSlice';
 
 function Header() {
    const [user,setUser]=useState(JSON.parse(localStorage.getItem('profile')));
-
+    const dispatch=useDispatch();
+    const nagivate=useNavigate();
+    const location=useLocation();
     useEffect(()=>{
         const token=user?.token
-
         setUser(JSON.parse(localStorage.getItem('profile')))
-    })
-
+    },[location])
+    const logout=()=>{
+        dispatch(authLogout());
+        nagivate('/');
+        setUser(null);
+    }
    console.log(user)
   return (
     <nav className='home_header'>
@@ -35,7 +42,7 @@ function Header() {
                         >
                             {user.result.given_name}
                         </span>
-                        <button className='header_button'>Logout</button>
+                        <button className='header_button' onClick={logout}>Logout</button>
                     </div>
 
                 )
