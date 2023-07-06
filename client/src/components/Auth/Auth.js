@@ -1,20 +1,28 @@
-import React, { useState,useEffect, useCallback } from 'react'
+import React, { useState,useEffect } from 'react'
 import './Auth.css'
-import {LockOutlined} from '@mui/icons-material';
-
-import { gapi } from "gapi-script"
-import Icon from './Icon'
+import jwt_decode from 'jwt-decode'
+import { useDispatch } from 'react-redux'
+import { authSignin } from '../../features/authSlice'
 
 
 // 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
 
 function Auth() {
+    const dispatch=useDispatch()
     const [isSignUp,setSignUp]=useState(false)
     const handleCallBackResponse=(res)=>{
-        console.log('Encoded JWT Id token : ',res.credential)
+     
+        // console.log('Encoded JWT Id token : ',res.credential)
+        // console.log('res : ',res)
+        const result=jwt_decode(res.credential)
+        const token=res.credential
+        // console.log('UserObject : ',userObject)
+        dispatch(authSignin({result,token}))
+
+
     }
    useEffect(()=>{
-    /*  global google*/
+    /*global google*/
     google.accounts.id.initialize({
         client_id:'716607211235-rucae2jlqhmnvr2d190pc6p0smf4imp2.apps.googleusercontent.com',
         callback:handleCallBackResponse
