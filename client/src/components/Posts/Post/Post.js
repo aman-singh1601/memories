@@ -4,16 +4,16 @@ import moment from 'moment'
 import {MoreHoriz,ThumbUpAlt,Delete} from '@mui/icons-material';
 import { useDispatch } from 'react-redux';
 import { removePost,likePost } from '../../../features/postSlice';
-import axios from 'axios';
+import axios from '../../../axios/axios';
 
 const Post = ({post,setCurrentId}) => {
   const dispatch=useDispatch();
-  const url='http://localhost:5000/posts';
+  const user=JSON.parse(localStorage.getItem('profile'))
   
   const deletePost=async()=>{
     console.log(post._id);
     try{
-    await axios.delete(`${url}/${post._id}`)
+    await axios.delete(`posts/${post._id}`)
     }catch(err){
       console.log(err)
     }
@@ -21,7 +21,7 @@ const Post = ({post,setCurrentId}) => {
   }
   const likeCard= async ()=>{
     try{
-      const {data}=await axios.patch(`${url}/${post._id}/likepost`)
+      const {data}=await axios.patch(`posts/${post._id}/likepost`)
       dispatch(likePost(data))
     }catch(err){
       console.log(err)
@@ -38,14 +38,17 @@ const Post = ({post,setCurrentId}) => {
       alt=''/>
       <div className='post_head'>
               <div className='post_info'>
-                <span className='post_creator'>{post.creator}</span>
+                <span className='post_creator'>{post.name}</span>
                 <span className='post_time'>{moment(post.createdAt).fromNow()}</span>
               </div>
               <div className='post_horiz' >
-                  <MoreHoriz
-                   className='post_icon'
-                   onClick={()=>setCurrentId(post._id)}
-                  />
+              {
+              user?.result.name===post.name && ( <MoreHoriz
+                className='post_icon'
+                onClick={()=>setCurrentId(post._id)}
+               />) 
+            }
+                 
               </div>
       </div>
       <div className='post_details'>
@@ -64,16 +67,23 @@ const Post = ({post,setCurrentId}) => {
       </div>
       <div className='post_actions'>
             <div className='like_button'>
-            <ThumbUpAlt className='post_icon' onClick={likeCard}/>
+            {
+              user?.result && (<ThumbUpAlt className='post_icon' onClick={likeCard}/>) 
+            }
             <span className='like_count'>
-              {post.likeCount}
+              {
+                post?.likes?.length
+              }
             </span>
             </div>
             <div className='like_button'>
-            <Delete
-              onClick={deletePost} 
-              className='post_icon'
-            />
+            {
+              user?.result.name===post.name && (<Delete
+                onClick={deletePost} 
+                className='post_icon'
+              />) 
+            }
+            
             </div>
       </div>
     </div>

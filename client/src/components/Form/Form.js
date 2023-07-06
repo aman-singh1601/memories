@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import FileBase from 'react-file-base64'
-import axios from 'axios'
+import axios from '../../axios/axios'
 import { useSelector,useDispatch } from 'react-redux'
 
 import './Form.css'
@@ -12,9 +12,9 @@ const Form=({currentId,setCurrentId}) =>{
   const post=useSelector(state=>currentId?state.post.posts.find(p=>p._id===currentId):null)
 
   const dispatch=useDispatch();  
-  
+  const user=JSON.parse(localStorage.getItem('profile'))
   const [postData,setpostData]=useState({
-    creator:'',
+   
     title:'',
     message:'',
     tags:'',
@@ -29,7 +29,7 @@ const Form=({currentId,setCurrentId}) =>{
     setCurrentId(null);
     setpostData(
       {
-        creator:'',
+        
         title:'',
         message:'',
         tags:'',
@@ -41,17 +41,17 @@ const Form=({currentId,setCurrentId}) =>{
       e.preventDefault()
       
       if(currentId){
-        const {data}= await axios.patch(`http://localhost:5000/posts/${currentId}`,postData);
+        const {data}= await axios.patch(`/posts/${currentId}`,{...postData,name:user?.result?.name});
         console.log(data)
         dispatch(update(data))
         
          
       }else{
         //create post
-       axios.post('http://localhost:5000/posts',postData)
+       axios.post('/posts',{...postData,name:user?.result?.name})
        .then(res=>{
         console.log( 'res : ' ,res)
-        dispatch(createPost(postData))
+        dispatch(createPost({...postData,name:user?.result?.name}))
        })
      
       }
@@ -65,14 +65,6 @@ const Form=({currentId,setCurrentId}) =>{
       <h4>{post?'Editing' : 'Creating'} a Memory</h4>
       <form onSubmit={handleSubmit} className='form'>
         
-        <input
-          placeholder='Creator'
-          className='form_input'
-          type="text"
-          name="creator"
-          value={postData.creator}
-          onChange={(e)=>setpostData({...postData ,creator:e.target.value})}
-        />
         
         <input
           placeholder='Title'

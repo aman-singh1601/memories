@@ -1,8 +1,8 @@
 import {createSlice,createAsyncThunk} from '@reduxjs/toolkit';
 
 
-import axios from 'axios'
-const url='http://localhost:5000/posts';
+import axios from '../axios/axios';
+
 
 const initialState={
     loading:false,
@@ -10,7 +10,7 @@ const initialState={
     error:''
 }
 export const fetchPosts=createAsyncThunk('post/fetchPosts',()=>{
-    return axios.get(url)
+    return axios.get('/posts')
     .then((res)=>res.data)
 })
 
@@ -22,8 +22,6 @@ const postSlice=createSlice({
             state.posts=state.posts.map((post)=>post._id===action.payload._id?action.payload:post)
         },
         removePost: (state,action)=>{
-            
-           
             state.posts=state.posts.filter((post)=>post._id !== action.payload)
         },
         createPost: (state,action)=>{

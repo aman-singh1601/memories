@@ -40,7 +40,7 @@ function Header() {
                         <span
                          className='user_name'
                         >
-                            {user.result.given_name}
+                            {user.result.name}
                         </span>
                         <button className='header_button' onClick={logout}>Logout</button>
                     </div>

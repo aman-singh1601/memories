@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken'
 import User from '../models/user.js'
 
 export const signin= async (req,res)=>{
-    const [email,password]=req.body;
+    const {email,password}=req.body;
 
     try{    
         const existingUser=await User.findOne({email});
@@ -24,7 +24,7 @@ export const signin= async (req,res)=>{
     }
 }
 export const signup= async (req,res)=>{
-    const [firstName,lastName,email,password,confirmPassword]=req.body;
+    const {firstName,lastName,email,password,confirmPassword}=req.body;
     try{
         const existingUser=await User.findOne({email});
         if(existingUser) return res.status(404).json({message:'User already exist'})

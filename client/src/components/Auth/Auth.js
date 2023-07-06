@@ -4,6 +4,7 @@ import jwt_decode from 'jwt-decode'
 import { useDispatch } from 'react-redux'
 import { authSignin } from '../../features/authSlice'
 import { useNavigate } from 'react-router-dom'
+import axios from '../../axios/axios'
 
 
 // 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
@@ -43,13 +44,21 @@ function Auth() {
     setSignUp(!isSignUp)
    }
 
-    const handleSubmit=(event)=>{
+    const handleSubmit=async(event)=>{
         event.preventDefault();
         console.log(formData)
         if(isSignUp){
-            dispatch()
-        }else{
+            const {data}= await axios.post('/user/signup',formData);
 
+            dispatch(authSignin(data))
+
+            navigate('/',{replace:true})
+
+            
+        }else{
+            const {data}=await axios.post('/user/signin',formData)
+            dispatch(authSignin(data))
+            navigate('/',{replace:true})
         }
         
     }
