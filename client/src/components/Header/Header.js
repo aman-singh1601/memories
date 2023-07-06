@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Header.css'
 import {Link} from 'react-router-dom'
 
 function Header() {
-    const user=null;
+   const [user,setUser]=useState(JSON.parse(localStorage.getItem('profile')));
+
+    useEffect(()=>{
+        const token=user?.token
+
+        setUser(JSON.parse(localStorage.getItem('profile')))
+    })
+
+   console.log(user)
   return (
     <nav className='home_header'>
         <div className='header_name'>
@@ -19,14 +27,14 @@ function Header() {
                 ?(
                     <div className='user_profile'>
                         <img
-                            className='user_profile'
-                            alt={user.result.name}
-                            src={user.result.imageUrl}
+                            className='user_image'
+                            src={user?.result?.picture}       
                         />
-                        {/* <span>{user.result.name.charAt(0)}</span> */}
                         <span
-                            className='user_name'
-                        >{user.result.name}</span>
+                         className='user_name'
+                        >
+                            {user.result.given_name}
+                        </span>
                         <button className='header_button'>Logout</button>
                     </div>
 

@@ -3,22 +3,23 @@ import './Auth.css'
 import jwt_decode from 'jwt-decode'
 import { useDispatch } from 'react-redux'
 import { authSignin } from '../../features/authSlice'
+import { useNavigate } from 'react-router-dom'
 
 
 // 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
 
 function Auth() {
-    const dispatch=useDispatch()
+    const dispatch=useDispatch();
+    const navigate=useNavigate();
     const [isSignUp,setSignUp]=useState(false)
     const handleCallBackResponse=(res)=>{
      
-        // console.log('Encoded JWT Id token : ',res.credential)
-        // console.log('res : ',res)
-        const result=jwt_decode(res.credential)
-        const token=res.credential
-        // console.log('UserObject : ',userObject)
+      
+        const result=jwt_decode(res?.credential)
+        const token=res?.credential
+       
         dispatch(authSignin({result,token}))
-
+        navigate('/', { replace: true });
 
     }
    useEffect(()=>{

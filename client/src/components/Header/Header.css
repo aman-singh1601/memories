@@ -34,12 +34,14 @@
 }
 .logo_link{
     height: 50px;
-    /* margin-bottom:30px; */
+    
 }
 .user_info{
+    width: 250px;
     margin-right: 8px;
 }
 .header_button{
+    flex: 0.6;
     font-size: 1rem;
     margin-top: 4px;
     border: none;
@@ -55,4 +57,20 @@
 .header_button:hover{
     font-size: 1.2rem;
     scale: 1.05;
+}
+.user_profile{
+    width: 100%;
+    display: flex;
+}
+.user_profile>span{
+    width: 100px;
+    font-size: 1.2rem;
+    font-family: sans-serif;
+    padding-top: 10px;
+    padding-left: 20px;
+    font-weight: 600;
+}
+.user_image{
+    height: 40px;
+    border-radius: 3rem;
 }
