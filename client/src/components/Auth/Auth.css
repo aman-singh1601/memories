@@ -44,7 +44,7 @@
   width:100%;
   padding:8px 0 5px 0;
   font-size:16px;
-  color:#fff;
+  color:#DBC2CF;
 }
 .input-container input:focus{ 
  border:none;	
@@ -56,7 +56,6 @@
 	background-color:#16262E;
 	outline: none;
     border: 0;
-    color: #DBC2CF;
 	padding:10px 20px;
 	text-transform:uppercase;
 	margin-top:25px;
@@ -106,4 +105,7 @@
 .auth_btn{
     display: flex;
     flex-direction: column;
+}
+#google-button{
+min-width: 100%;
 }

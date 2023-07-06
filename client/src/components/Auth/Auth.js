@@ -7,17 +7,23 @@ import { useNavigate } from 'react-router-dom'
 
 
 // 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
+const initialState={
+    firstName:'',
+    lastName:'',
+    email:'',
+    password:'',
+    confirmPassword:'',
+
+}
 
 function Auth() {
     const dispatch=useDispatch();
     const navigate=useNavigate();
     const [isSignUp,setSignUp]=useState(false)
+    const [formData,setFormData]=useState(initialState);
     const handleCallBackResponse=(res)=>{
-     
-      
         const result=jwt_decode(res?.credential)
         const token=res?.credential
-       
         dispatch(authSignin({result,token}))
         navigate('/', { replace: true });
 
@@ -36,11 +42,19 @@ function Auth() {
    const handleSignup=()=>{
     setSignUp(!isSignUp)
    }
-    const handleSubmit=()=>{
+
+    const handleSubmit=(event)=>{
+        event.preventDefault();
+        console.log(formData)
+        if(isSignUp){
+            dispatch()
+        }else{
+
+        }
         
     }
-    const handleChange=()=>{
-
+    const handleChange=(event)=>{
+        setFormData({...formData,[event.target.name]:event.target.value})
     }
    
   return (
@@ -103,7 +117,7 @@ function Auth() {
                 isSignUp && (
                     <div className='input-container'>
                     <input
-                        name='password'
+                        name='confirmPassword'
                         onChange={handleChange}
                         required
                         autoFocus
