@@ -65,35 +65,39 @@ const Form=({currentId,setCurrentId}) =>{
       <h4>{post?'Editing' : 'Creating'} a Memory</h4>
       <form onSubmit={handleSubmit} className='form'>
         
-        
+        <div className='form_input'>
         <input
-          placeholder='Title'
-          className='form_input'
           type="text"
           name="title"
           value={postData.title}
           onChange={(e)=>setpostData({...postData ,title:e.target.value})}
         />
-        
-        <textarea
-          placeholder='Message'
-          className='form_input input_message'
+        <label>Title</label>
+        </div>
+       
+        <div className='form_input'>
+        <input          
           type="text"
           name="message"
           value={postData.message}
           onChange={(e)=>setpostData({...postData ,message:e.target.value})}
         />
+        <label>Message</label>
+        </div>
         
-        <input
-          placeholder='Tags'
-         className='form_input'
+         <div className='form_input'>
+         <input
           type="text"
           name="tags"
           value={postData.tags}
           onChange={(e)=>setpostData({...postData ,tags:e.target.value.split(',')})}
         />
+        <label>Tags</label>
+         </div>
+        
         <div className='fileInput'>
           <FileBase
+          className='file_input'
           type='file'
           multiple={false}
           onDone ={({base64})=>setpostData({...postData,selectedFile:base64})}

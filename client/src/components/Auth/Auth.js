@@ -37,7 +37,7 @@ function Auth() {
     });
     google.accounts.id.renderButton(
         document.getElementById('google-button'),
-        {theme:'outline',size:'large'}
+        {theme:'dark',size:'large'}
     )
    })
    const handleSignup=()=>{

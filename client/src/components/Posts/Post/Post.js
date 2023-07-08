@@ -43,7 +43,7 @@ const Post = ({post,setCurrentId}) => {
               </div>
               <div className='post_horiz' >
               {
-              user?.result.name===post.name && ( <MoreHoriz
+              (user?.result.name===post.name || user?.result?._id==post?.creator) && ( <MoreHoriz
                 className='post_icon'
                 onClick={()=>setCurrentId(post._id)}
                />) 
@@ -78,7 +78,7 @@ const Post = ({post,setCurrentId}) => {
             </div>
             <div className='like_button'>
             {
-              user?.result.name===post.name && (<Delete
+              (user?.result.name===post.name || user?.result?._id==post?.creator) && (<Delete
                 onClick={deletePost} 
                 className='post_icon'
               />) 

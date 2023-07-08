@@ -3,21 +3,28 @@ import './Header.css'
 import {Link, useLocation, useNavigate} from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { authLogout } from '../../features/authSlice';
+import decode from 'jwt-decode'
 
 function Header() {
    const [user,setUser]=useState(JSON.parse(localStorage.getItem('profile')));
     const dispatch=useDispatch();
     const nagivate=useNavigate();
     const location=useLocation();
-    useEffect(()=>{
-        const token=user?.token
-        setUser(JSON.parse(localStorage.getItem('profile')))
-    },[location])
     const logout=()=>{
         dispatch(authLogout());
         nagivate('/');
         setUser(null);
     }
+    useEffect(()=>{
+        const token=user?.token;
+        if(token){
+            const decodedToken=decode(token)
+            if(decodedToken.exp*1000<new Date().getTime())
+                logout();
+        }
+        setUser(JSON.parse(localStorage.getItem('profile')))
+    },[location])
+   
    console.log(user)
   return (
     <nav className='home_header'>

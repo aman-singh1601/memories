@@ -14,26 +14,6 @@
     display: flex;
     flex-direction: column;
 }
-.form_input{
-    background-color: #DBC2CF;
-    border: none;
-    border-radius: .3rem;
-    width: 90%;
-    margin-left: 4px;
-    margin-bottom: 4px;
-    height: 40px;
-    font-size: 1.2rem;
-    color: #2E4756;
-    font-family: sans-serif;
-}
-.input_message{
-    min-width: 90%;
-    max-width: 90%;
-
-}
-.form_input:focus{
-    outline: none;
-}
 .clear_button{
     font-size: 1rem;
     margin-left: 4px;
@@ -65,4 +45,49 @@
 .submit_button:hover{
     font-size: 1.2rem;
     scale: 1.05;
+}
+
+.text_center{
+    font-family: serif;
+    color: #DBC2CF;
+    text-transform: uppercase;
+    font-size: 23px;
+    margin: -50px 0 30px 0;
+    display: block;
+    text-align: center;
+}
+.form_input{
+	position:relative;
+	margin-bottom:25px;
+}
+.form_input label{
+	position:absolute;
+	top:0px;
+	left:0px;
+	font-size:16px;
+	color:#DBC2CF;	
+	transition: all 0.5s ease-in-out;
+}
+.form_input input{ 
+  border:0;
+  border-bottom:2px solid #16262E;  
+  background:transparent;
+  width:100%;
+  padding:8px 0 5px 0;
+  font-size:16px;
+  color:#2E4756;
+}
+.form_input input:focus{ 
+ border:none;	
+ outline:none;
+ border-bottom:1px solid #16262E;	
+}
+.form_input input:focus ~ label,
+.form_input input:valid ~ label{
+	top:-12px;
+	font-size:12px;
+	
+}
+.file_input{
+   background-color: #16262E;
 }
