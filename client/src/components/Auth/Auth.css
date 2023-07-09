@@ -34,7 +34,6 @@
 	left:0px;
 	font-size:16px;
 	color:#DBC2CF;	
-    /* pointer-event:none; */
 	transition: all 0.5s ease-in-out;
 }
 .input-container input{ 
@@ -50,6 +49,13 @@
  border:none;	
  outline:none;
  border-bottom:1px solid #16262E;	
+}
+
+.input-container input:focus ~ label,
+.input-container input:valid ~ label{
+	top:-12px;
+	font-size:12px;
+	
 }
 .btn{
 	color:#DBC2CF;
@@ -69,12 +75,6 @@
     transition: 450ms ease-in-out;
      box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
  
-}
-.input-container input:focus ~ label,
-.input-container input:valid ~ label{
-	top:-12px;
-	font-size:12px;
-	
 }
 .btn_switch{
     /* margin-left: 5px; */
@@ -99,9 +99,6 @@
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
  
 }
-/* .google_button{
-    width: 200px;
-    /* text-align: center; */
 .auth_btn{
     display: flex;
     flex-direction: column;
