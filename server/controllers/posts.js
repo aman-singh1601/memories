@@ -48,9 +48,6 @@ export const likePost=async (req,res)=>{
     
     if(!mongoose.Types.ObjectId.isValid(id))
     return res.status(404).send('No post with that id');
-
-
-
     const post =await PostMessage.findById(id);
 
     const index=post.likes.findIndex((id)=>id===String(req.userId))
@@ -65,4 +62,17 @@ export const likePost=async (req,res)=>{
 
     res.json(updatedPost)
 
+}
+
+export const getPostBySearch=async (req,res)=>{
+    const {searchQuery}=req.query;
+    try{
+        console.log(searchQuery)
+        // const title=new RegExp(searchQuery,'i');
+        // console.log(title)
+        const posts=await PostMessage.find({title:{$regex:`${searchQuery}`}})
+        res.json({data:posts})
+    }catch(err){
+        res.status(404).json({message:err.message})
+    }
 }

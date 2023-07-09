@@ -25,7 +25,7 @@ function Header() {
         setUser(JSON.parse(localStorage.getItem('profile')))
     },[location])
    
-   console.log(user)
+  
   return (
     <nav className='home_header'>
         <div className='header_name'>

@@ -29,6 +29,9 @@ const postSlice=createSlice({
         },
         likePost:(state,action)=>{
             state.posts=state.posts.map((post)=>post._id===action.payload._id?action.payload:post)
+        },
+        getPostBySearch:(state,action)=>{
+
         }
        
        
@@ -52,4 +55,4 @@ const postSlice=createSlice({
 })
 
 export default postSlice.reducer
-export const {update,removePost,createPost,likePost}=postSlice.actions
+export const {update,removePost,createPost,likePost,getPostBySearch}=postSlice.actions

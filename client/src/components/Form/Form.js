@@ -50,7 +50,6 @@ const Form=({currentId,setCurrentId}) =>{
         //create post
        axios.post('/posts',{...postData,name:user?.result?.name})
        .then(res=>{
-        console.log( 'res : ' ,res)
         dispatch(createPost({...postData,name:user?.result?.name}))
        })
      

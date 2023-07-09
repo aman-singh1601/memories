@@ -7,6 +7,7 @@ import { fetchPosts } from '../../features/postSlice'
 import { useDispatch } from 'react-redux';
 import { useNavigate,useLocation } from 'react-router-dom'
 import SearchIcon from '@mui/icons-material/Search';
+import axios from '../../axios/axios'
 function useQuery(){
   return new URLSearchParams(useLocation().search)
 }
@@ -20,16 +21,29 @@ function Home() {
     const [currentId,setCurrentId]=useState(null);
     const [search,setSearch]=useState('')
 
-    const user=JSON.parse(localStorage.getItem('profile'))
+    useEffect(()=>{
+      dispatch(fetchPosts())
+    },[currentId,dispatch])
 
+    const user=JSON.parse(localStorage.getItem('profile'))
+    const searchPost= async()=>{
+      if(search.trim()){
+        console.log('search : ', search)
+        const {data:{data}}= await axios.get(`/posts/search?searchQuery=${search || 'none'}`)
+        setSearch('');
+        console.log('result : ',data)
+
+      }else {
+        nagivate('/');
+      }
+
+    }
     const handleKeyDown=(e)=>{
         if(e.key === 'Enter'){
-          //search  
+          searchPost();
         }
     }
-  useEffect(()=>{
-    dispatch(fetchPosts())
-  },[currentId,dispatch])
+  
   return (
     <div className='main_body'>
             <div className='posts_con' >
@@ -47,7 +61,10 @@ function Home() {
                    onChange={(e)=>setSearch(e.target.value)}
                   />
                   <label>Search</label>
-                  <SearchIcon className='search_icon'/>
+                  <SearchIcon 
+                  className='search_icon'
+                  onClick={searchPost}
+                  />
                
                 
                 </div>
