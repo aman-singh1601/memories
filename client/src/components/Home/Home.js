@@ -3,7 +3,7 @@ import './Home.css'
 import Posts from '../Posts/Posts'
 import Form from '../Form/Form'
 // import ChipInput from 'material-ui-chip-input'
-import { fetchPosts } from '../../features/postSlice'
+import { fetchPosts, getPostBySearch } from '../../features/postSlice'
 import { useDispatch } from 'react-redux';
 import { useNavigate,useLocation } from 'react-router-dom'
 import SearchIcon from '@mui/icons-material/Search';
@@ -30,7 +30,10 @@ function Home() {
       if(search.trim()){
         console.log('search : ', search)
         const {data:{data}}= await axios.get(`/posts/search?searchQuery=${search || 'none'}`)
+        dispatch(getPostBySearch(data))
+        nagivate(`/posts/search?searchQuery=${search || 'none'}`)
         setSearch('');
+        
         console.log('result : ',data)
 
       }else {

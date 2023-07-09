@@ -67,9 +67,7 @@ export const likePost=async (req,res)=>{
 export const getPostBySearch=async (req,res)=>{
     const {searchQuery}=req.query;
     try{
-        console.log(searchQuery)
-        // const title=new RegExp(searchQuery,'i');
-        // console.log(title)
+        
         const posts=await PostMessage.find({title:{$regex:`${searchQuery}`}})
         res.json({data:posts})
     }catch(err){

@@ -7,7 +7,8 @@ import axios from '../axios/axios';
 const initialState={
     loading:false,
     posts:[],
-    error:''
+    error:'',
+    
 }
 export const fetchPosts=createAsyncThunk('post/fetchPosts',()=>{
     return axios.get('/posts')
@@ -31,7 +32,8 @@ const postSlice=createSlice({
             state.posts=state.posts.map((post)=>post._id===action.payload._id?action.payload:post)
         },
         getPostBySearch:(state,action)=>{
-
+            console.log(action.payload)
+            state.posts=action.payload
         }
        
        

@@ -15,7 +15,7 @@ const Posts=({setCurrentId})=> {
         post.loading && <div>Loading...</div>
        }
        {
-        !post.loading && post.posts.length 
+        !post.loading && post?.posts?.length 
         ?(
           <div className='post_store'>
             
