@@ -42,7 +42,6 @@ const Form=({currentId,setCurrentId}) =>{
       
       if(currentId){
         const {data}= await axios.patch(`/posts/${currentId}`,{...postData,name:user?.result?.name});
-        console.log(data)
         dispatch(update(data))
         
          
