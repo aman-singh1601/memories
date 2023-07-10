@@ -63,3 +63,7 @@
     transition: 450ms;
     transform: scale(1.4) !important;
 }
+.home_pagination{
+    padding-top: 10px;
+    width: 100%;
+}

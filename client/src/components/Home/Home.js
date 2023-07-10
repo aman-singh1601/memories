@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react'
 import './Home.css'
 import Posts from '../Posts/Posts'
 import Form from '../Form/Form'
-// import ChipInput from 'material-ui-chip-input'
 import { fetchPosts, getPostBySearch } from '../../features/postSlice'
 import { useDispatch } from 'react-redux';
 import { useNavigate,useLocation } from 'react-router-dom'
 import SearchIcon from '@mui/icons-material/Search';
 import axios from '../../axios/axios'
+import Paginate from '../Pagination/Pagination'
 function useQuery(){
   return new URLSearchParams(useLocation().search)
 }
@@ -72,6 +72,9 @@ function Home() {
                 
                 </div>
                 <Form currentId={currentId} setCurrentId={setCurrentId}/>
+                <div className='home_pagination'>
+                  <Paginate page={page}/>
+                </div>
             </div>
               )
             }
