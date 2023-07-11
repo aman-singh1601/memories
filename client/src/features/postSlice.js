@@ -7,12 +7,17 @@ import axios from '../axios/axios';
 const initialState={
     loading:false,
     posts:[],
+    currentPage:1,
+    numberOfPages:0,
     error:'',
     
 }
-export const fetchPosts=createAsyncThunk('post/fetchPosts',()=>{
-    return axios.get('/posts')
-    .then((res)=>res.data)
+export const fetchPosts=createAsyncThunk('post/fetchPosts',async (page)=>{
+ return await axios.get(`/posts?page=${page}`)
+    .then((res)=>res)
+   
+    
+   
 })
 
 const postSlice=createSlice({
@@ -43,8 +48,11 @@ const postSlice=createSlice({
         state.loading = true
     })
     builder.addCase(fetchPosts.fulfilled,(state,action)=>{
+        // console.log(action.payload.data)//contains posts currpage noofpages
         state.loading=false
-        state.posts=action.payload
+        state.posts=action.payload.data.data
+        state.currentPage=action.payload.data.currentPage
+        state.numberOfPages=action.payload.data.numberOfPages
         state.error=''
     })
     builder.addCase(fetchPosts.rejected,(state,action)=>{

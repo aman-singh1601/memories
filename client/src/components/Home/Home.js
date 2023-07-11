@@ -21,9 +21,9 @@ function Home() {
     const [currentId,setCurrentId]=useState(null);
     const [search,setSearch]=useState('')
 
-    useEffect(()=>{
-      dispatch(fetchPosts())
-    },[currentId,dispatch])
+    // useEffect(()=>{
+    //   dispatch(fetchPosts())
+    // },[currentId,dispatch])
 
     const user=JSON.parse(localStorage.getItem('profile'))
     const searchPost= async()=>{
