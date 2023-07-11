@@ -5,3 +5,9 @@
     flex-wrap: wrap;
     
 }
+.post_loader{
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

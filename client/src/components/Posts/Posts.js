@@ -4,6 +4,7 @@ import './Posts.css'
 
 
 import { useSelector } from 'react-redux'
+import { CircularProgress } from '@mui/material'
 
 const Posts=({setCurrentId})=> {
   
@@ -12,7 +13,8 @@ const Posts=({setCurrentId})=> {
   return (
     <>
        {
-        post?.loading && <div>Loading...</div>
+        
+        post?.loading && <div className='post_loader'><CircularProgress/></div>
        }
        {
         !post?.loading && post?.posts?.length 
