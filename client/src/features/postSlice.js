@@ -48,7 +48,7 @@ const postSlice=createSlice({
         state.loading = true
     })
     builder.addCase(fetchPosts.fulfilled,(state,action)=>{
-        // console.log(action.payload.data)//contains posts currpage noofpages
+        console.log(action.payload.data)//contains posts currpage noofpages
         state.loading=false
         state.posts=action.payload.data.data
         state.currentPage=action.payload.data.currentPage

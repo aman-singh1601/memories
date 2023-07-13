@@ -3,7 +3,7 @@ import PostMessage from "../models/postMessage.js"
 
 export const getPosts= async (req,res)=>{
     const {page}=req.query;
-    console.log(page)
+  
    try{
         const LIMIT=8;
         //get the starting index of every page
